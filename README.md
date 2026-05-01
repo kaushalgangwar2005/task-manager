@@ -115,5 +115,3 @@ You can test APIs using:
 * Frontend integration (React)
 * Pagination & Filtering
 
-
-If you like this project, please ⭐ the repo!
