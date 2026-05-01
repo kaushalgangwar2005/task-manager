@@ -6,7 +6,7 @@ import User from "../models/User.js";
 const router = express.Router();
 
 
-// ================= SIGNUP =================
+
 router.post("/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -27,10 +27,12 @@ router.post("/signup", async (req, res) => {
       password: hashed
     });
 
-    res.status(201).json({
-      msg: "User created successfully",
-      user
-    });
+const { password: _, ...safeUser } = user._doc;
+
+res.status(201).json({
+  msg: "User created successfully",
+  user: safeUser,
+});
 
   } catch (err) {
     res.status(500).json({ msg: "Server error", error: err.message });
